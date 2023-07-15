@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            
+        }
+        body{
+            background-image: conic-gradient(red, yellow, green, blue, black);
+        }
+        .box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* border: 2px solid red; */
+            width: auto;
+            height: 1000px;
+            /* margin-left: 35%; */
+        }
+        #sub{
+            background-color:  rgb(24, 160, 24);
+            color: white;
+            border-radius: 5px;
+            width: 250px;
+            padding: 10px;
+            border: 1px solid white;
+        }
+        #anony{
+            border: 2px solid rgb(255, 255, 255);
+            width: 250px;
+            padding: 10px;
+            
+            
+        }
+        #in{
+            /* border: 1px solid red; */
+            padding: 30px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+        }
+        #ask{
+            font-size: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    
+        <div class="box">
+            <div id="in">
+            
+                <h3 id="ask">Ask your friends to confess</h3>
+                <form action="/get.php" method="post" >
+                    <input type="text" name="anony" id="anony" placeholder="Your Name">
+                    <br>
+                    <button type="submit" id="sub">Generate link</button>
+                </form>
+            </div>
+            
+
+        </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anonymous Message Generator</title>
+    <style>
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .message-link {
+            margin-top: 10px;
+            font-weight: bold;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Anonymous Message Generator</h2>
+        <form id="messageForm">
+            <input type="text" id="senderName" placeholder="Your Name">
+            <textarea id="message" placeholder="Enter your message"></textarea>
+            <input type="submit" value="Generate Link">
+        </form>
+        <div id="linkContainer" style="display: none;">
+            <h3>Share this link:</h3>
+            <input type="text" id="messageLink" readonly>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("messageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var senderName = document.getElementById("senderName").value.trim();
+            var message = document.getElementById("message").value.trim();
+
+            if (!senderName || !message) {
+                alert("Please enter your name and message.");
+                return;
+            }
+
+            // Generate a random identifier for the message
+            var messageId = generateRandomId();
+
+            // Create the link to share the message
+            var messageLink = window.location.origin + "/message?id=" + messageId;
+
+            // Display the generated link
+            document.getElementById("messageLink").value = messageLink;
+            document.getElementById("linkContainer").style.display = "block";
+
+            // Save the message to a database or storage using the messageId
+            // This step requires server-side implementation and is beyond the scope of this example.
+        });
+
+        function generateRandomId() {
+            // This function generates a random alphanumeric string of length 8
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var randomId = "";
+            for (var i = 0; i < 8; i++) {
+                randomId += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return randomId;
+        }
+    </script>
+</body>
+</html>
